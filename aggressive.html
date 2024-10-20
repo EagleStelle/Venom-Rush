@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="game.css">
+    <title>Aggressive Mode</title>
+</head>
+<body>
+    <div id="controlsContainer" class="controls-container">
+        <section>
+            <div id="scoreContainer">
+                <div id="playerScore">Player: 0</div>
+                <div id="aiScore">AI: 0</div>
+            </div>
+        </section>
+        <section>
+            <div id="bgmToggleContainer" class="toggle-container">
+                <label class="switch">
+                    <input type="checkbox" id="toggleBGMCheckbox" checked>
+                    <span class="slider round"></span>
+                </label>
+                <span id="bgmToggleLabel">Toggle BG Music</span>
+            </div>
+            <div id="gameSpeedContainer" class="game-speed-container">
+                <input type="range" id="gameSpeedSlider" min="1" max="150" value="75">
+            </div>
+        </section>
+    </div>
+    <div id="countdownBar">
+        <div id="countdownFill"></div>
+    </div>
+    <div id="canvasWrapper">
+        <canvas id="gameCanvas" width="700" height="700"></canvas>
+    </div>
+    <div id="controlContainer">
+        <div id="upButton" class="arrow-button">↑</div><br>
+        <div id="leftButton" class="arrow-button">←</div>
+        <div id="rightButton" class="arrow-button">→</div><br>
+        <div id="downButton" class="arrow-button">↓</div>
+    </div>
+    <div id="popupOverlay" class="overlay">
+        <div id="popupContent" class="popup">
+            <p id="popupMessage"></p>
+            <button id="tryAgainButton">Try Again</button>
+        </div>
+    </div>
+    <audio id="playerEatSound" src="assets/player_eat.mp3"></audio>
+    <audio id="specialPlayerEatSound" src="assets/gold_eat.mp3"></audio>
+    <audio id="aiEatSound" src="assets/ai_eat.mp3"></audio>
+    <audio id="specialAIEatSound" src="assets/gold_loss.mp3"></audio>
+    <audio id="snakeDieSound" src="assets/death.mp3"></audio>
+    <audio id="bgm1" loop>
+        <source src="assets/bgm1.mp3" type="audio/mp3">
+        Your browser does not support the audio tag.
+    </audio>
+    <audio id="bgm2" loop>
+        <source src="assets/bgm2.mp3" type="audio/mp3">
+        Your browser does not support the audio tag.
+    </audio>
+    <audio id="bgm3" loop>
+        <source src="assets/bgm3.mp3" type="audio/mp3">
+        Your browser does not support the audio tag.
+    </audio>
+    <audio id="bgm4" loop>
+        <source src="assets/bgm4.mp3" type="audio/mp3">
+        Your browser does not support the audio tag.
+    </audio>
+    <audio id="playerWinSound" src="assets/win.mp3"></audio>
+    <audio id="aiWinSound" src="assets/lose.mp3"></audio>
+    <audio id="drawSound" src="assets/draw.mp3"></audio>
+    <script src="aggressive.js"></script>
+</body>
+</html>
