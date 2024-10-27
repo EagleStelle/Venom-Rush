@@ -38,8 +38,8 @@ body {
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
     aspect-ratio: 1 / 1;
-    width: 100%;
-    max-width: 55vh;
+    height: 100%;
+    width: auto;
     gap: 0.5em;
 }
 
