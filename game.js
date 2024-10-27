@@ -3,8 +3,8 @@ const canvas = document.querySelector('.game-canvas');
 const ctx = canvas.getContext('2d');
 
 // Set canvas size
-canvas.width = 600;
-canvas.height = 600;
+canvas.width = 700;
+canvas.height = 700;
 
 // Cell size and initial position of the player snake
 const cellSize = 20;
