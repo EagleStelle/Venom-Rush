@@ -25,18 +25,22 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center; /* Horizontally centered */
+    align-items: left; /* Horizontally centered */
     height: 100%; /* Take full available height */
-    gap: 20px;
+    width: auto;
+    padding: 5vh;
+    gap: 2vh;
+    font-size: 1.2em;
 }
 
 .controls-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
-    width: 150px;
-    height: 150px;
-    gap: 10px;
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    max-width: 55vh;
+    gap: 0.5em;
 }
 
 #upButton {
@@ -60,27 +64,18 @@ body {
 }
 
 /* Arrow Button Styling for Controller Layout */
-.controls-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    aspect-ratio: 1 / 1;
-    width: 100%;
-    max-width: 150px;
-    gap: 10px;
-}
-
 .arrow-button {
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #b33c3c;
     color: white;
-    font-size: 20px;
-    border-radius: 10px;
+    border-radius: 2vh;
     cursor: pointer;
     user-select: none;
     transition: background-color 0.3s ease;
+    font-size: 5vh;
+    font-weight: bold;
 }
 
 .arrow-button:hover {
@@ -93,10 +88,9 @@ body {
     justify-content: center;
     align-items: center;
     background-color: #f0e4d7; /* Cream background for canvas */
-    width: 100%;
+    width: 80%;
     max-width: 600px;
     aspect-ratio: 1/1; /* Keep wrapper square */
-    position: relative;
 }
 
 .game-canvas {
@@ -108,15 +102,27 @@ body {
 }
 
 /* Toggle styling */
+.toggle-container {
+    display: flex;
+    align-items: center; /* Center vertically */
+    gap: 0.5em; /* Space between the switch and label */
+}
+
+/* Add spacing between toggle sections */
+.toggle-container + .toggle-container {
+    margin-top: 0.2em; /* Adds space between the two toggle buttons */
+}
+
 .switch {
     position: relative;
     display: inline-block;
-    width: 34px;
-    height: 20px;
+    width: 2em; /* Adjusted width in em units for responsiveness */
+    height: 1.2em; /* Adjusted height in em units for responsiveness */
 }
 
-.switch input {
-    display: none;
+.bgm-toggle-label,
+.mode-toggle-label {
+    line-height: 1; /* Ensures the label text centers vertically */
 }
 
 .slider {
@@ -252,17 +258,15 @@ input[type="range"]::-moz-range-thumb:hover {
 @media (min-width: 768px) {
     body {
         flex-direction: row;
-        justify-content: space-between;
     }
 
     .settings-container, .controls-container {
         flex: 1;
-        margin: 0 10px;
+        margin: 0 3em;
     }
 
     .canvas-wrapper {
         flex: 2;
-        margin: 0 10px;
     }
 }
 
@@ -271,11 +275,7 @@ input[type="range"]::-moz-range-thumb:hover {
         flex-direction: column;
     }
 
-    .settings-container, .controls-container {
-        margin-bottom: 10px;
-    }
-
     .canvas-wrapper {
-        margin-bottom: 10px;
+        margin: 0.3em;
     }
 }
