@@ -70,11 +70,11 @@ body {
     align-items: center;
     background-color: #b33c3c;
     color: white;
-    border-radius: 2vh;
+    border-radius: 0.2em;
     cursor: pointer;
     user-select: none;
     transition: background-color 0.3s ease;
-    font-size: 5vh;
+    font-size: 1.5em;
     font-weight: bold;
 }
 
