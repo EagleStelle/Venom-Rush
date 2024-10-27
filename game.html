@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="game.css">
+    <title>Viper Rush - Game</title>
+</head>
+<body>
+    <div class="settings-container">
+        <section>
+            <div class="score-container">
+                <div class="player-score">Player: 0</div>
+                <div class="ai-score">AI: 0</div>
+            </div>
+        </section>
+        <section>
+            <div class="toggle-container">
+                <label class="switch">
+                    <input type="checkbox" class="toggle-bgm-checkbox" checked>
+                    <span class="slider round"></span>
+                </label>
+                <span class="bgm-toggle-label">Toggle BG Music</span>
+            </div>
+            <div class="game-speed-container">
+                <input type="range" class="game-speed-slider" min="1" max="150" value="75">
+            </div>
+        </section>
+    </div>
+    
+    <div class="canvas-wrapper">
+        <canvas class="game-canvas"></canvas>
+    </div>
+    
+    <div class="controls-container">
+        <div id="upButton" class="arrow-button">↑</div><br>
+        <div id="leftButton" class="arrow-button">←</div>
+        <div id="rightButton" class="arrow-button">→</div><br>
+        <div id="downButton" class="arrow-button">↓</div>
+    </div>
+    
+    <div class="overlay">
+        <div class="popup">
+            <p class="popup-message"></p>
+            <button class="try-again-button">Try Again</button>
+        </div>
+    </div>            
+
+    <!-- JavaScript to Load Mode and Initialize Game -->
+    <script src="game.js"></script>
+</body>
+</html>

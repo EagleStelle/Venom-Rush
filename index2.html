@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viper Rush</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Viper Rush</h1>
+        <div class="buttons">
+            <button onclick="setMode('defensive')">Defensive Mode</button>
+            <button class="aggressive" onclick="setMode('aggressive')">Aggressive Mode</button>
+        </div>
+        <footer>
+            <p>Created by EagleStelle</p>
+        </footer>
+    </div>
+
+    <script>
+        function setMode(mode) {
+            localStorage.setItem('gameMode', mode); // Store the selected mode
+            window.location.href = 'game.html'; // Redirect to game.html
+        }
+    </script>
+</body>
+</html>

@@ -1,77 +1,114 @@
 /* General Styles */
 body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #1a001a;
-    font-family: Arial, sans-serif;
-    flex-direction: column;
-    position: relative;
-    height: 100vh;
-    overflow: hidden;
-}
-#scoreContainer, #controlContainer, .popup {
-    background-color: #330033; 
-    color: #ffcccc; 
-}
-.arrow-button, #tryAgainButton {
-    background-color: #8b0000;
-    color: #ffcccc;
-}
-.arrow-button:hover, #tryAgainButton:hover {
-    background-color: #bf1a1a;
-}
-.arrow-button:active, #tryAgainButton:active {
-    background-color: #660000;
+    min-height: 100vh;
+    background-color: #2d1b2e; /* Neutral violet-toned background */
+    color: #000;
 }
 
-/* Controls Container */
+/* Layout Styling */
+.settings-container,
+.canvas-wrapper,
 .controls-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 0.625rem;
+    padding: 10px;
+    background-color: #f0e4d7; /* Cream background for containers */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Score Container */
-#scoreContainer {
-    position: relative;
-    padding: 0.625rem;
-    border-radius: 0.3125rem;
+.settings-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-    margin-top: 0.625rem;
-}
-#playerScore, #aiScore {
-    font-size: 1.5rem; /* Responsive score font size */
-}
-/* BGM Toggle Container */
-#bgmToggleContainer {
-    display: flex;
-    align-items: center;
-}
-#bgmToggleLabel {
-    margin-left: 0.625rem;
-    color: white;
+    justify-content: center;
+    align-items: center; /* Horizontally centered */
+    height: 100%; /* Take full available height */
+    gap: 20px;
 }
 
-/* Toggle switch */
+.controls-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    width: 150px;
+    height: 150px;
+    gap: 10px;
+}
+
+#upButton {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+#leftButton {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+#rightButton {
+    grid-column: 3;
+    grid-row: 2;
+}
+
+#downButton {
+    grid-column: 2;
+    grid-row: 3;
+}
+
+/* Arrow Button Styling for Controller Layout */
+.arrow-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #b33c3c;
+    color: white;
+    width: 100%;
+    height: 100%;
+    font-size: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.3s ease;
+}
+
+.arrow-button:hover {
+    background-color: #cc5151; /* Lighter red on hover */
+}
+
+/* Canvas Centering */
+.canvas-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0e4d7; /* Cream background for canvas */
+    width: 100%;
+    max-width: 600px;
+    aspect-ratio: 1/1; /* Keep wrapper square */
+    position: relative;
+}
+
+.game-canvas {
+    background-color: #6e3b6e; /* Violet-tinted canvas */
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* Toggle styling */
 .switch {
     position: relative;
     display: inline-block;
-    width: 3.75rem;
-    height: 2.125rem;
+    width: 34px;
+    height: 20px;
 }
 
 .switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
+    display: none;
 }
 
 .slider {
@@ -83,214 +120,154 @@ body {
     bottom: 0;
     background-color: #ccc;
     transition: .4s;
+    border-radius: 10px;
+}
+
+.slider.round {
+    border-radius: 34px;
 }
 
 .slider:before {
     position: absolute;
     content: "";
-    height: 1.625rem;
-    width: 1.625rem;
-    left: 0.25rem;
-    bottom: 0.25rem;
+    height: 12px;
+    width: 12px;
+    left: 4px;
+    bottom: 4px;
     background-color: white;
     transition: .4s;
+    border-radius: 50%;
 }
 
-/* Slider styling */
-input[type="range"] {
-    -webkit-appearance: none;
-    appearance: none; 
+input:checked + .slider {
+    background-color: #6e3b6e; /* Violet-tinted switch */
+}
+
+input:checked + .slider:before {
+    transform: translateX(14px);
+}
+
+/* Style the container holding the slider */
+.game-speed-container {
     width: 100%;
-    background: #8b0000; 
+    padding: 10px;
+    display: flex;
+    justify-content: center;
 }
 
+/* Custom slider styling */
+input[type="range"] {
+    -webkit-appearance: none; /* Removes default appearance */
+    appearance: none;
+    width: 80%; /* Adjust the width as necessary */
+    height: 10px; /* Height of the slider track */
+    background: #330033; /* Dark violet track */
+    border-radius: 5px;
+    outline: none;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+/* Change opacity when hovering over the slider */
+input[type="range"]:hover {
+    opacity: 1;
+}
+
+/* The thumb (the draggable part of the slider) */
 input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    background-color: #ffcccc; /* Light pink thumb */
-    border: 1px solid #660000; /* Darker red border around thumb */
+    width: 20px; /* Size of the thumb */
     height: 20px;
-    width: 20px;
-    border-radius: 50%;
+    background: #b33c3c; /* Red thumb */
+    border-radius: 50%; /* Circular thumb */
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Add a subtle shadow */
+    transition: background-color 0.3s ease;
 }
+
+/* Style for Firefox */
 input[type="range"]::-moz-range-thumb {
-    background-color: #ffcccc; /* Light pink thumb */
-    border: 1px solid #660000; /* Darker red border around thumb */
-    height: 20px;
     width: 20px;
+    height: 20px;
+    background: #b33c3c;
     border-radius: 50%;
-}
-input[type="checkbox"]:checked + label, input[type="radio"]:checked + label {
-    background-color: #8b0000; /* Dark red for checked state */
-    color: #ffcccc; /* Light pink text */
-    border-color: #660000; /* Darker red border */
-}
-input[type="checkbox"]:hover + label, input[type="radio"]:hover + label {
-    background-color: #bf1a1a; /* Brighter red on hover */
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease;
 }
 
-.slider.round {
-    border-radius: 2.125rem;
+/* Hover effect on the thumb */
+input[type="range"]::-webkit-slider-thumb:hover {
+    background: #cc5151; /* Lighter red on hover */
 }
 
-.slider.round:before {
-    border-radius: 50%;
+input[type="range"]::-moz-range-thumb:hover {
+    background: #cc5151; /* Lighter red on hover */
 }
 
-/* Game Speed Container */
-#gameSpeedContainer {
-    display: flex;
-    flex-direction: column;
-}
-
-#gameSpeedSlider {
-    margin-top: 0.625rem;
-    width: 12.5rem; /* Scalable width */
-}
-
-#bgmToggleLabel, label[for="gameSpeedSlider"] {
-    color: white;
-    font-size: 1rem;
-}
-
-/* Countdown bar */
-#countdownBar {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: #5e2750; 
-    height: 0.5rem;
-    display: flex;
-}
-
-#countdownFill {
-    background-color: #ffcc80;
-    height: 100%; 
-}
-
-/* Wrapper to ensure the canvas stays inside the viewport without overflow */
-#canvasWrapper {
-    width: 100vw; /* Use the full width of the viewport */
-    height: 100vh; /* Use the full height of the viewport */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden; /* Prevent overflow */
-}
-/* Game Canvas */
-#gameCanvas {
-    background-color: #5c3c63; /* Dark violet for canvas background */
-    border: 0.3125rem solid #8b0000; /* Dark red for border */
-    max-width: 100%;
-    max-height: 100%;
-    width: auto;
-    height: auto;
-    aspect-ratio: 1 / 1; /* Ensure canvas stays as a square */
-    box-sizing: border-box; /* Ensure border is included in size */
-}
-
-/* Control Container */
-#controlContainer {
-    display: grid;
-    grid-template-areas:
-        ". upButton ."
-        "leftButton . rightButton"
-        ". downButton .";
-    grid-gap: 1rem;
-    justify-content: center;
-    align-items: center;
-    margin-top: 1.25rem;
-    background-color: rgb(91, 96, 71);
-}
-
-/* Arrow buttons */
-.arrow-button {
-    width: 6.875rem; /* Use rem for scaling */
-    height: 6.875rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2.5rem;
-    font-weight: bold;
-    font-style: Impact;
-}
-
-/* Overlay */
-.overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    align-items: center;
-    justify-content: center;
-}
 
 /* Popup */
+.overlay {
+    position: fixed;
+    display: none;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+}
+
 .popup {
+    background: #f0e4d7; /* Cream Popup */
     padding: 20px;
     border-radius: 10px;
     text-align: center;
+}
+
+.popup button {
+    background-color: #b33c3c; /* Red Button */
     color: white;
-    font-size: 1.5rem;
-}
-
-#tryAgainButton {
-    padding: 0.625rem;
-    cursor: pointer;
     border: none;
-    border-radius: 0.3125rem;
-    margin-top: 1rem;
-    font-size: 1.125rem;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
+.popup button:hover {
+    background-color: #cc5151; /* Lighter Red on hover */
+}
 
+/* Responsive Layout */
+@media (min-width: 768px) {
+    body {
+        flex-direction: row;
+        justify-content: space-between;
+    }
 
-/* Hide control buttons on larger screens */
-@media (min-width: 600px) {
-    #controlContainer {
-        display: none;
+    .settings-container, .controls-container {
+        flex: 1;
+        margin: 0 10px;
+    }
+
+    .canvas-wrapper {
+        flex: 2;
+        margin: 0 10px;
     }
 }
 
-/* Mobile-specific styles */
-@media (max-width: 600px) {
+@media (max-width: 767px) {
     body {
         flex-direction: column;
-        height: auto;
     }
 
-    #gameCanvas {
-        width: 90%; /* Make canvas smaller on mobile */
+    .settings-container, .controls-container {
+        margin-bottom: 10px;
     }
 
-    .arrow-button {
-        width: 4rem;
-        height: 4rem;
-        font-size: 2rem; /* Smaller arrows for mobile */
-    }
-
-    #playerScore, #aiScore {
-        font-size: 1.2rem;
-    }
-
-    #countdownBar {
-        height: 0.5rem; /* Smaller countdown on mobile */
-    }
-
-    #popupContent {
-        padding: 1rem;
-        font-size: 1.2rem;
-    }
-
-    #tryAgainButton {
-        font-size: 1rem;
-    }
-
-    #controlContainer {
-        display: grid; /* Ensure control container is visible on mobile */
+    .canvas-wrapper {
+        margin-bottom: 10px;
     }
 }
